@@ -66,10 +66,6 @@ fn find_word_recursive(matrix: &MatrixStruct<char>, word: &str, current: (usize,
 
 impl BogMatrix for MatrixStruct<char> {
     fn contains(&self, word: &str) -> bool {
-        // word finding algorithm:
-        // find first letter
-        // run recursive algorithm for every neighbor with check_word[1..]
-        // return || of all runs of the algorithm
         for i in 0..self.num_columns {
             for j in 0..self.num_rows {
                 if find_word_recursive(self, word, (i, j)) {
