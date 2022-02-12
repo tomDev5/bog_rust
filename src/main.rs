@@ -1,7 +1,5 @@
-// mod bog_wordset;
-// use bog_wordset::BogWordSet;
-
-// mod bog_matrix;
-// use bog_matrix::BogMatrix;
+mod bog_matrix;
+mod bog_ui;
+mod bog_wordset;
 
 fn main() {}
