@@ -101,3 +101,32 @@ pub fn bog_matrix_create(num_rows: usize, num_columns: usize) -> impl BogMatrix 
     }
     mat
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::bog_matrix::matrix::MatrixStruct;
+    use crate::bog_matrix::BogMatrix;
+    pub fn dummy_matrix_create(num_rows: usize, num_columns: usize) -> impl BogMatrix {
+        let mut mat = MatrixStruct::<char> {
+            matrix: Vec::with_capacity(num_rows * num_columns),
+            num_rows: num_rows,
+            num_columns: num_columns,
+        };
+        for _ in (0..num_rows * num_columns).step_by(5) {
+            mat.matrix.push('A');
+            mat.matrix.push('B');
+            mat.matrix.push('C');
+            mat.matrix.push('D');
+            mat.matrix.push('E');
+        }
+        mat
+    }
+
+    #[test]
+    fn matrix_contains_test() {
+        let matrix: Box<dyn BogMatrix> = Box::new(dummy_matrix_create(5, 5));
+        assert_eq!(matrix.contains("ABBAABCDED"), true);
+        assert_eq!(matrix.contains("GGGG"), false);
+        assert_eq!(matrix.contains("ABBEABCDED"), false);
+    }
+}
