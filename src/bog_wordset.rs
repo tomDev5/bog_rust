@@ -26,14 +26,11 @@ impl BogWordSet for BogWordsetStruct {
 
     fn print(&self) {
         print!("Printing wordset:\t");
-        // for word in &self.words {
-        //     println!("\t{}", word);
-        // }
         println!("{:?}", self.words);
     }
 }
 
-pub fn bog_wordset_create() -> impl BogWordSet {
+pub fn create() -> impl BogWordSet {
     let set = BogWordsetStruct {
         words: HashSet::new(),
     };
@@ -46,7 +43,7 @@ mod tests {
 
     #[test]
     fn word_set_add_contains_test() {
-        let mut word_set = bog_wordset_create();
+        let mut word_set = create();
         word_set.add_word(String::from("Word"));
         word_set.add_word(String::from("Another"));
         word_set.add_word(String::from("Third"));
@@ -57,7 +54,7 @@ mod tests {
 
     #[test]
     fn word_set_remove_test() {
-        let mut word_set = bog_wordset_create();
+        let mut word_set = create();
         word_set.add_word(String::from("Word"));
         word_set.add_word(String::from("Another"));
         word_set.add_word(String::from("Third"));
