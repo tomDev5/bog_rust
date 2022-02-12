@@ -81,7 +81,7 @@ impl BogMatrix for MatrixStruct<char> {
     }
 }
 
-pub fn bog_matrix_create(num_rows: usize, num_columns: usize) -> impl BogMatrix {
+pub fn create(num_rows: usize, num_columns: usize) -> impl BogMatrix {
     use rand::prelude::*;
     let mut rng = rand::thread_rng();
 
